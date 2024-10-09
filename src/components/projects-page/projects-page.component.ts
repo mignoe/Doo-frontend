@@ -13,6 +13,7 @@ interface Project {
   id: string;
   name: string;
   sessions: any[];
+  users: any[];
   admins: any[];
 }
 
@@ -40,26 +41,35 @@ export class ProjectsPageComponent implements OnInit {
   }
 
   async loadProjects(): Promise<void> {
-    const userId = 'user-id-here'; // Replace with actual user ID
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-    if (!userId) {
-      console.error("User ID is required");
-      return;
-    }
-
-    fetch(environment.apiUrl + '/projects/getProjectsByUser', {
+    const queryParams = new URLSearchParams({
+      name: user.name,
+      password: user.password
+    }).toString();
+    
+    console.log("making request on ", `${environment.apiUrl}/projects/getProjectsByUser?${queryParams}`);
+    try {
+      const response = await fetch(`${environment.apiUrl}/projects/getProjectsByUser?${queryParams}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.user)
-    }).
-    then(response => {
-      if (response.status !== 200) {
-        throw new Error(response.statusText);
       }
-      console.log(response.json());
-    })
+      });
+
+      if (!response.ok) {
+      throw new Error(response.statusText);
+      }
+
+      const data = await response.json();
+      this.projects = data;
+      console.log('Projects:', this.projects);
+      console.log(data); // Handle the data here
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    
 
   }
 

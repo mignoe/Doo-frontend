@@ -1,0 +1,17 @@
+<div class="create-project-container">
+    <h2>Create a New Project</h2>
+  
+    <form #createProjectForm="ngForm" (ngSubmit)="onSubmit(createProjectForm)">
+      <div>
+        <label for="projectName">Project Name:</label>
+        <input type="text" id="projectName" [(ngModel)]="projectName" name="projectName" required />
+      </div>
+  
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+  
+      <button type="submit" [disabled]="!createProjectForm.valid">Create Project</button>
+    </form>
+  </div>
+  

@@ -1,11 +1,33 @@
 <div class="login-container">
     <h1>Login to Your To-Do List</h1>
-    <form class="login-form">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username" required>
-        
+    <form class="login-form" #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+        <label for="name">Username</label>
+        <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            [(ngModel)]="name" 
+            required
+            #usernameModel="ngModel"
+            placeholder="Choose a username"
+        >
+        <div *ngIf="usernameModel.invalid && usernameModel.touched" style="color: red; font-size: 14px;">
+            Username is required.
+        </div>
+
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            [(ngModel)]="password" 
+            required
+            #passwordModel="ngModel"
+            placeholder="Create a password"
+        >
+        <div *ngIf="passwordModel.invalid && passwordModel.touched" style="color: red; font-size: 14px;">
+            Password is required.
+        </div>
         
         <button type="submit">Login</button>
     </form>

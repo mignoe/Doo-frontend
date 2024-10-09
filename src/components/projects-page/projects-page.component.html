@@ -1,0 +1,18 @@
+<div class="projects-container">
+    <h2>Your Projects</h2>
+  
+    <div *ngIf="projects.length > 0; else noProjects">
+      <ul>
+        <li *ngFor="let project of projects">
+          <h3>{{ project.name }}</h3>
+          <p>Sessions: {{ project.sessions.length }}</p>
+          <p>Admins: {{ project.admins.length }}</p>
+        </li>
+      </ul>
+    </div>
+  
+    <ng-template #noProjects>
+      <p>No projects available.</p>
+    </ng-template>
+  </div>
+  

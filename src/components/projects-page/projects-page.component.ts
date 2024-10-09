@@ -30,7 +30,7 @@ export class ProjectsPageComponent implements OnInit {
   projects: Project[] = [];
   user: User = { id: '', name: '', password: '' };
 
-  constructor() {
+  constructor(private router: Router) {
 
     const user = localStorage.getItem('user');
     console.log('User: ', user);
@@ -62,7 +62,7 @@ export class ProjectsPageComponent implements OnInit {
       }
 
       const data = await response.json();
-      this.projects = data;
+      this.projects = data.projects;
       console.log('Projects:', this.projects);
       console.log(data); // Handle the data here
 
@@ -71,6 +71,17 @@ export class ProjectsPageComponent implements OnInit {
     }
     
 
+  }
+
+  createProject(): void {
+    console.log('Creating project');
+    this.router.navigate(['/create-project']);
+  }
+
+  goToProject(projectId: string): void {
+    console.log('Navigating to project:', projectId);
+    localStorage.setItem('projectId', projectId);
+    this.router.navigate(['/project']);
   }
 
 }

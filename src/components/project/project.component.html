@@ -1,0 +1,19 @@
+<div class="project-container">
+    <h2>{{ projectName }}</h2>
+  
+    <div *ngIf="sessions.length > 0; else noProjects">
+      <ul>
+        <li *ngFor="let session of sessions">
+          <h3>{{ session.name }}</h3>
+          <button (click)="goToSession(session.id)">Go to Session</button>
+        </li>
+      </ul>
+    </div>
+
+    <button (click)="createSession()">Create Session</button>
+  
+    <ng-template #noProjects>
+      <p>No sessions available.</p>
+    </ng-template>
+  </div>
+  

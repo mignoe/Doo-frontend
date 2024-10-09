@@ -5,11 +5,12 @@
       <ul>
         <li *ngFor="let project of projects">
           <h3>{{ project.name }}</h3>
-          <p>Sessions: {{ project.sessions.length }}</p>
-          <p>Admins: {{ project.admins.length }}</p>
+          <button (click)="goToProject(project.id)">Go to Project</button>
         </li>
       </ul>
     </div>
+
+    <button (click)="createProject()">Create Project</button>
   
     <ng-template #noProjects>
       <p>No projects available.</p>

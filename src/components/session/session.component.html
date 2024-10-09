@@ -1,0 +1,19 @@
+<div class="session-container">
+    <h2>{{ sessionName }}</h2>
+  
+    <div *ngIf="sessions.length > 0; else noSessions">
+      <ul>
+        <li *ngFor="let session of sessions">
+          <h3>{{ session.name }}</h3>
+          <button (click)="goToSession(session.id, session.name)">Go to Session</button>
+        </li>
+      </ul>
+    </div>
+
+    <button (click)="createSession()">Create Task</button>
+  
+    <ng-template #noSessions>
+      <p>No sessions available.</p>
+    </ng-template>
+  </div>
+  

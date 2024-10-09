@@ -18,16 +18,16 @@ import { environment } from '../../../environment/environment';
   styleUrl: './session.component.css'
 })
 export class SessionComponent {
-  sessionName: string = localStorage.getItem('sessionName') || '';
-  sessions: any[] = [];
+  taskName: string = localStorage.getItem('taskName') || '';
+  tasks: any[] = [];
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.loadSessions();
+    this.loadTasks();
   }
 
-  async loadSessions(): Promise<void> {
+  async loadTasks(): Promise<void> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
     const sessionId = localStorage.getItem('sessionId');
@@ -36,7 +36,7 @@ export class SessionComponent {
     }).toString();
 
     try {
-      const response = await fetch(`${environment.apiUrl}/sessions/getSessionsBySession?${queryParams}`, {
+      const response = await fetch(`${environment.apiUrl}/tasks/getTasksBySession?${queryParams}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -49,22 +49,31 @@ export class SessionComponent {
       }
 
       const data = await response.json();
-      this.sessions = data;
-      console.log('Sessions:', data);
+      this.tasks = data;
+      console.log('Tasks:', data);
     } catch (error) {
-      console.error('Failed to load sessions:', error);
+      console.error('Failed to load tasks:', error);
     }
   }
 
-  createSession(): void {
-    console.log('Creating session');
-    this.router.navigate(['/create-session']);
+  completeTask(taskId: string): void {
   }
 
-  goToSession(sessionId: string): void {
-    console.log('Navigating to session:', sessionId);
-    localStorage.setItem('sessionId', sessionId);
-    this.router.navigate(['/session', sessionId]);
+  goBack() {
+    this.router.navigate(['/project']); // Make sure to import and inject Router in your component
+  }
+  
+
+  createTask(): void {
+    console.log('Creating task');
+    this.router.navigate(['/create-task']);
+  }
+
+  goToTask(taskId: string, taskName: string): void {
+    console.log('Navigating to task:', taskId);
+    localStorage.setItem('taskName', taskName);
+    localStorage.setItem('taskId', taskId);
+    this.router.navigate(['/task']);
   }
 
 }

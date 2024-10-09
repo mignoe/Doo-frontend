@@ -61,11 +61,15 @@ export class ProjectComponent {
     this.router.navigate(['/create-session']);
   }
 
+  goBack() {
+    this.router.navigate(['/projects']); // Make sure to import and inject Router in your component
+  }
+
   goToSession(sessionId: string, sessionName: string): void {
-    console.log('Navigating to session:', sessionId);
+    console.log('Navigating to session:[', sessionId);
     localStorage.setItem('sessionName', sessionName);
     localStorage.setItem('sessionId', sessionId);
-    this.router.navigate(['/session', sessionId]);
+    this.router.navigate(['/session']);
   }
 
 }

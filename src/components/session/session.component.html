@@ -1,19 +1,25 @@
-<div class="session-container">
-    <h2>{{ sessionName }}</h2>
-  
-    <div *ngIf="sessions.length > 0; else noSessions">
-      <ul>
-        <li *ngFor="let session of sessions">
-          <h3>{{ session.name }}</h3>
-          <button (click)="goToSession(session.id, session.name)">Go to Session</button>
-        </li>
-      </ul>
+<div class="task-container">
+  <div class="header">
+    <h2>{{ taskName }}</h2>
+    <div class="header-actions">
+      <button class="back-btn" (click)="goBack()">Back to Projects</button>
+      <button class="create-btn" (click)="createTask()">+ New Task</button>
     </div>
-
-    <button (click)="createSession()">Create Task</button>
-  
-    <ng-template #noSessions>
-      <p>No sessions available.</p>
-    </ng-template>
   </div>
-  
+
+  <div *ngIf="tasks.length > 0; else noTasks" class="tasks-list">
+    <ul>
+      <li *ngFor="let task of tasks" class="task-item">
+        <div class="task-info">
+          <h3>{{ task.name }}</h3>
+          <p class="task-content">{{ task.content }}</p>
+        </div>
+        <button class="complete-btn" (click)="completeTask(task.id)">Mark as Complete</button>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noTasks>
+    <p class="no-tasks-text">No tasks available. Create one to get started!</p>
+  </ng-template>
+</div>

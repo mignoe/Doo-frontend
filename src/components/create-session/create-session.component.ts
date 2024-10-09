@@ -84,4 +84,8 @@ export class CreateSessionComponent {
       console.log('Form Submitted', { session: sessionData });
     }
   }
+
+  goBack() {
+    this.router.navigate(['/project']);
+  }
 }

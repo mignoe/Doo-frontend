@@ -79,4 +79,9 @@ export class CreateProjectComponent {
       console.log('Form Submitted', { project: projectData });
     }
   }
+
+  goBack() {
+    this.router.navigate(['/projects']); // Make sure to import and inject Router in your component
+  }
+
 }

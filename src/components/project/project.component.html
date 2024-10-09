@@ -1,19 +1,24 @@
 <div class="project-container">
+  <div class="header">
     <h2>{{ projectName }}</h2>
-  
-    <div *ngIf="sessions.length > 0; else noProjects">
-      <ul>
-        <li *ngFor="let session of sessions">
-          <h3>{{ session.name }}</h3>
-          <button (click)="goToSession(session.id)">Go to Session</button>
-        </li>
-      </ul>
+    <div class="header-actions">
+      <button class="back-btn" (click)="goBack()">Back to Projects</button>
+      <button class="create-btn" (click)="createSession()">+ New Session</button>
     </div>
-
-    <button (click)="createSession()">Create Session</button>
-  
-    <ng-template #noProjects>
-      <p>No sessions available.</p>
-    </ng-template>
   </div>
-  
+
+  <div *ngIf="sessions.length > 0; else noSessions" class="sessions-list">
+    <ul>
+      <li *ngFor="let session of sessions" class="session-item">
+        <div class="session-info">
+          <h3>{{ session.name }}</h3>
+        </div>
+        <button class="go-btn" (click)="goToSession(session.id, session.name)">Go to Session</button>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noSessions>
+    <p class="no-sessions-text">No sessions available. Create one to start organizing tasks!</p>
+  </ng-template>
+</div>

@@ -1,17 +1,28 @@
-<div class="create-Session-container">
+<div class="create-session-container">
+  <div class="header">
     <h2>Create a New Session</h2>
-  
-    <form #createSessionForm="ngForm" (ngSubmit)="onSubmit(createSessionForm)">
-      <div>
-        <label for="SessionName">Session Name:</label>
-        <input type="text" id="SessionName" [(ngModel)]="sessionName" name="SessionName" required />
-      </div>
-  
-      <div *ngIf="errorMessage" class="error-message">
-        {{ errorMessage }}
-      </div>
-  
-      <button type="submit" [disabled]="!createSessionForm.valid">Create Session</button>
-    </form>
   </div>
-  
+
+  <form #createSessionForm="ngForm" (ngSubmit)="onSubmit(createSessionForm)" class="session-form">
+    <div class="form-group">
+      <label for="SessionName">Session Name:</label>
+      <input
+        type="text"
+        id="SessionName"
+        class="form-input"
+        [(ngModel)]="sessionName"
+        name="SessionName"
+        required
+        placeholder="Enter the session name"
+      />
+    </div>
+
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" class="submit-btn" [disabled]="!createSessionForm.valid">Create Session</button>
+    <button type="button" class="cancel-btn" (click)="goBack()">Cancel</button>
+  </form>
+</div>

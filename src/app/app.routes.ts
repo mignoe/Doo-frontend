@@ -6,6 +6,8 @@ import { ProjectsPageComponent } from '../components/projects-page/projects-page
 import { CreateProjectComponent } from '../components/create-project/create-project.component';
 import { ProjectComponent } from '../components/project/project.component';
 import { CreateSessionComponent } from '../components/create-session/create-session.component';
+import { SessionComponent } from '../components/session/session.component';
+import { CreateTaskComponent } from '../components/create-task/create-task.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -13,5 +15,8 @@ export const routes: Routes = [
     { path: "projects", component: ProjectsPageComponent },
     {path: "create-project", component: CreateProjectComponent},
     { path: 'project', component: ProjectComponent },
-    { path: 'create-session', component: CreateSessionComponent }
+    { path: 'create-session', component: CreateSessionComponent },
+    { path: 'session', component: SessionComponent },
+    { path: 'create-task', component: CreateTaskComponent },  
+
 ];

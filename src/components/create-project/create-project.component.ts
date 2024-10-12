@@ -55,7 +55,7 @@ export class CreateProjectComponent {
       // Collect the project data
       const projectData = { 
                         name: this.projectName, 
-                        usersNames: [], 
+                        usersNames: listOfUsers, 
                         adminsNames: listOfAdmins, 
                         // We still need to authenticate the user to make this operation
                         userName: user.name, 

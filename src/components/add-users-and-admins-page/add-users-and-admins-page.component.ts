@@ -39,12 +39,23 @@ export class AddUsersAndAdminsPageComponent {
       // Set the type of user based on the checkbox value
       this.typeOfUser = this.isAdmin ? 'Admin' : 'User';
 
-      const addUserData = { 
-        newUserName: this.newUserName, 
-        projectId: projectId, 
-        adminName: user.name, 
-        adminPassword: user.password 
-      };
+      let addUserData: any = {};
+
+      if (!this.isAdmin) {
+        addUserData = { 
+          newUserName: this.newUserName, 
+          projectId: projectId, 
+          adminName: user.name, 
+          adminPassword: user.password 
+        };
+      } else {
+        addUserData = { 
+          newAdminName: this.newUserName, 
+          projectId: projectId, 
+          adminName: user.name, 
+          adminPassword: user.password 
+        };
+      }
 
       // Send a PATCH request to add the user to a project
       fetch(environment.apiUrl + '/projects/add' + this.typeOfUser, {

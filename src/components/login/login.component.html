@@ -1,0 +1,42 @@
+<div class="login-container">
+    <h1>Login to Your Doo List</h1>
+    <form class="login-form" #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+        <label for="name">Username</label>
+        <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            [(ngModel)]="name" 
+            required
+            #usernameModel="ngModel"
+            placeholder="Put your username"
+        >
+        <div *ngIf="usernameModel.invalid && usernameModel.touched" style="color: red; font-size: 14px;">
+            Username is required.
+        </div>
+
+        <label for="password">Password</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            [(ngModel)]="password" 
+            required
+            #passwordModel="ngModel"
+            placeholder="Put your password"
+        >
+        <div *ngIf="passwordModel.invalid && passwordModel.touched" style="color: red; font-size: 14px;">
+            Password is required.
+        </div>
+        
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+          </div>
+      
+
+        <button type="submit">Login</button>
+    </form>
+    <div class="signup-link">
+        <p>Don't have an account? <a href="/sign-up">Sign up here</a></p>
+    </div>
+</div>

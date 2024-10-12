@@ -1,0 +1,53 @@
+<div class="signup-container">
+    <h1>Create Your To-Do List Account</h1>
+    <form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+        <label for="username">Username</label>
+        <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            [(ngModel)]="username" 
+            required
+            #usernameModel="ngModel"
+            placeholder="Choose a username"
+        >
+        <div *ngIf="usernameModel.invalid && usernameModel.touched" style="color: red; font-size: 14px;">
+            Username is required.
+        </div>
+
+        <label for="password">Password</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            [(ngModel)]="password" 
+            required
+            #passwordModel="ngModel"
+            placeholder="Create a password"
+        >
+        <div *ngIf="passwordModel.invalid && passwordModel.touched" style="color: red; font-size: 14px;">
+            Password is required.
+        </div>
+
+        <label for="confirm-password">Confirm Password</label>
+        <input 
+            type="password" 
+            id="confirm-password" 
+            name="confirmPassword" 
+            [(ngModel)]="confirmPassword" 
+            required
+            #confirmPasswordModel="ngModel"
+            placeholder="Confirm your password"
+        >
+        <div *ngIf="confirmPasswordModel.invalid && confirmPasswordModel.touched" style="color: red; font-size: 14px;">
+            Confirmation is required.
+        </div>
+
+        <span *ngIf="passwordsDoNotMatch" style="color:red; font-size: 14px;">Passwords do not match!</span>
+        
+        <button type="submit">Sign Up</button>
+    </form>
+    <div class="login-link">
+        <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+</div>

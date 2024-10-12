@@ -1,0 +1,47 @@
+<div class="create-project-container">
+  <div class="header">
+    <h2>Create a New Project</h2>
+  </div>
+
+  <form #createProjectForm="ngForm" (ngSubmit)="onSubmit(createProjectForm)" class="project-form">
+    <div class="form-group">
+      <label for="ProjectName">Project Name:</label>
+      <input
+        type="text"
+        id="ProjectName"
+        class="form-input"
+        [(ngModel)]="projectName"
+        name="ProjectName"
+        required
+        placeholder="Enter the project name"
+      />
+      <label for="ProjectUsers">Project Users:</label>
+      <input
+        type="text"
+        id="ProjectUsers"
+        class="form-input"
+        [(ngModel)]="projectUsers"
+        name="ProjectUsers"
+        placeholder="Enter the project normal users, separated by commas"
+      />
+      <label for="ProjectName">Project Admins:</label>
+      <p>Admins are users that can do special operations on the project, such as addind more users and admins, and creating sessions</p>
+      <input
+        type="text"
+        id="ProjectAdmins"
+        class="form-input"
+        [(ngModel)]="projectAdmins"
+        name="ProjectAdmins"
+        placeholder="Enter the project admins, separated by commas"
+      />
+    </div>
+
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" class="submit-btn" [disabled]="!createProjectForm.valid">Create Project</button>
+    <button type="button" class="cancel-btn" (click)="goBack()">Cancel</button>
+  </form>
+</div>

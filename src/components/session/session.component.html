@@ -1,0 +1,26 @@
+<div class="task-container">
+  <div class="header">
+    <h2>{{ taskName }}</h2>
+    <div class="header-actions">
+      <button class="back-btn" (click)="goBack()">Back to Projects</button>
+      <button class="create-btn" (click)="createTask()">+ New Task</button>
+    </div>
+  </div>
+
+  <div *ngIf="tasks.length > 0; else noTasks" class="tasks-list">
+    <ul>
+      <li *ngFor="let task of tasks" class="task-item">
+        <div class="task-info">
+            <h3>{{ task.name }}</h3><p class="task-complete" *ngIf="task.isComplete">(Complete)</p>
+            
+          <p class="task-content">{{ task.content }}</p>
+        </div>
+        <button class="complete-btn" (click)="completeTask(task.id)">Mark as Complete</button>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noTasks>
+    <p class="no-tasks-text">No tasks available. Create one to get started!</p>
+  </ng-template>
+</div>

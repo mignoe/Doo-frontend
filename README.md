@@ -1,27 +1,58 @@
-# MyApp
+# Doo - Sistema de Gerenciamento de Tarefas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+Este é um sistema web desenvolvido com Angular para gerenciar tarefas colaborativas. A ideia é facilitar a gestão de tarefas usando projetos com diversos usuários colaborando para a realização delas. As tarefas são agrupadas em sessões para facilitar a organização.
 
-## Development server
+Cada projeto pode ter múltiplos usuários, que podem ser designados como usuários comuns ou administradores, permitindo um gerenciamento das permissões. Os administradores têm a capacidade de criar novas sessões, adicionar usuários e administradores ao projeto, enquanto os usuários comuns (assim como os administradores) podem criar tarefas marcá-las como concluídas e acompanhar o status (concluída ou não) de cada uma delas.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+O sistema oferece uma interface intuitiva que facilita a navegação entre projetos e sessões, garantindo que todos os membros da equipe possam acessar rapidamente as informações necessárias.
 
-## Code scaffolding
+## Instalação Back-end
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone o repositório:
 
-## Build
+git clone https://github.com/mignoe/Doo.git
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. Acesse o diretório do projeto:
 
-## Running unit tests
+cd Doo
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Instale as dependências:
 
-## Running end-to-end tests
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Execute the back-end
 
-## Further help
+execute the following commands:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+npm run build
+
+npm run start
+
+
+## Instalação Front-end
+
+1. Clone o repositório:
+
+git clone https://github.com/mignoe/Doo-frontend.git
+
+2. Acesse o diretório do projeto:
+
+cd Doo-frontend
+
+3. Instale o angular
+
+npm install -g @angular/cli
+
+4. Instale as dependências:
+
+npm install
+
+
+## Execução
+
+Para iniciar o projeto, execute:
+
+ng serve
+
+
+Abra http://localhost:4200 em qualquer navegador.

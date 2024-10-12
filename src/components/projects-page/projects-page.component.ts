@@ -78,10 +78,25 @@ export class ProjectsPageComponent implements OnInit {
     this.router.navigate(['/create-project']);
   }
 
+  signOut(): void {
+    console.log('Signing out');
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
+  }
+
   goToProject(projectId: string): void {
     console.log('Navigating to project:', projectId);
     localStorage.setItem('projectId', projectId);
     this.router.navigate(['/project']);
   }
+
+  getProjectUserNames(project:any): string {
+    let admins = project.admins.map((x: {name: string}) => x.name).join(', ');
+    let users = project.users.map((x: {name: string}) => x.name).join(', ');
+    return admins + ', ' + users; 
+
+    return project.users.map((x: {name: string}) => x.name).join(', ');
+  }
+  
 
 }

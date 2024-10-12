@@ -61,6 +61,11 @@ export class ProjectComponent {
     this.router.navigate(['/create-session']);
   }
 
+
+  addUsersOrAdmins() {
+    this.router.navigate(['/add-users-or-admins-to-project']);
+  }
+
   goBack() {
     this.router.navigate(['/projects']); // Make sure to import and inject Router in your component
   }

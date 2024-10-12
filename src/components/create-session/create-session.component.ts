@@ -78,7 +78,11 @@ export class CreateSessionComponent {
       })
       .catch(error => {
         console.error('Error during session creation', error);
-        this.errorMessage = 'Error creating session. Please try again.';
+        if (error.message === 'Forbidden') {
+          this.errorMessage = 'Unauthorized. You are not an admin from this project.';
+        } else {
+          this.errorMessage = 'Error creating session. Please try again.';
+        }
       });
 
       console.log('Form Submitted', { session: sessionData });

@@ -64,6 +64,11 @@ export class LoginComponent {
       .catch(error => {
         console.error('Error during sign up', error);
         // Handle error (e.g., display error message)
+        if (error.message === 'Unauthorized') {
+          this.errorMessage = "Invalid username or password";
+        } else if (error.message == "Failed to fetch") {
+          this.errorMessage = "Failed to connect to the server, the server may be down";
+        }
       });
 
 

@@ -57,6 +57,26 @@ export class SessionComponent {
   }
 
   completeTask(taskId: string): void {
+
+    fetch(`${environment.apiUrl}/tasks/complete`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ taskId })
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+
+        console.log('Task completed:', taskId);
+        this.loadTasks();
+      })
+      .catch((error) => {
+        console.error('Failed to complete task:', error);
+      });
+
   }
 
   goBack() {

@@ -8,8 +8,10 @@ import { ProjectComponent } from '../components/project/project.component';
 import { CreateSessionComponent } from '../components/create-session/create-session.component';
 import { SessionComponent } from '../components/session/session.component';
 import { CreateTaskComponent } from '../components/create-task/create-task.component';
+import { AddUsersAndAdminsPageComponent } from '../components/add-users-and-admins-page/add-users-and-admins-page.component';
 
 export const routes: Routes = [
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'sign-up', component: SignUpComponent },
     { path: "projects", component: ProjectsPageComponent },
@@ -18,5 +20,7 @@ export const routes: Routes = [
     { path: 'create-session', component: CreateSessionComponent },
     { path: 'session', component: SessionComponent },
     { path: 'create-task', component: CreateTaskComponent },  
+    { path: 'add-users-or-admins-to-project', component: AddUsersAndAdminsPageComponent }
+    
 
 ];

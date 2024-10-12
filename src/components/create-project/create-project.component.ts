@@ -17,6 +17,9 @@ import { User } from '../../interfaces/User';
 })
 export class CreateProjectComponent {
   projectName: string = '';
+  projectUsers: string = '';
+  projectAdmins: string = '';
+
   errorMessage: string | null = null;
   user: User = { id: '', name: '', password: '' };
 
@@ -36,9 +39,28 @@ export class CreateProjectComponent {
         return;
       }
 
+      // Parse the users and admins names into lists
+      // we need to trim the results to avoid any spaces characters in the names
+      let listOfUsers = this.projectUsers.split(',').map(name => name.trim());
+      let listOfAdmins = this.projectAdmins.split(',').map(name => name.trim());
+
+      // we need to add the current user to the list of admins, if not already there
+      // If the current user isn't on the project admins list he won't be able to control the projct
+      if (!listOfAdmins.includes(user.name)) {
+        listOfAdmins.push(user.name);
+        listOfAdmins = listOfAdmins.filter(name => name !== '');
+        console.log(listOfAdmins);
+      }
+
       // Collect the project data
-      console.log("heeere", user);
-      const projectData = { name: this.projectName, usersNames: [], adminsNames: [user.name], userName: user.name, userPassword: user.password };
+      const projectData = { 
+                        name: this.projectName, 
+                        usersNames: [], 
+                        adminsNames: listOfAdmins, 
+                        // We still need to authenticate the user to make this operation
+                        userName: user.name, 
+                        userPassword: user.password }
+                        ;
       
 
 
@@ -79,6 +101,7 @@ export class CreateProjectComponent {
       console.log('Form Submitted', { project: projectData });
     }
   }
+
 
   goBack() {
     this.router.navigate(['/projects']); // Make sure to import and inject Router in your component

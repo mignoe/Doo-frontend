@@ -1,5 +1,5 @@
 <div class="login-container">
-    <h1>Login to Your To-Do List</h1>
+    <h1>Login to Your Doo List</h1>
     <form class="login-form" #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
         <label for="name">Username</label>
         <input 
@@ -9,7 +9,7 @@
             [(ngModel)]="name" 
             required
             #usernameModel="ngModel"
-            placeholder="Choose a username"
+            placeholder="Put your username"
         >
         <div *ngIf="usernameModel.invalid && usernameModel.touched" style="color: red; font-size: 14px;">
             Username is required.
@@ -23,12 +23,17 @@
             [(ngModel)]="password" 
             required
             #passwordModel="ngModel"
-            placeholder="Create a password"
+            placeholder="Put your password"
         >
         <div *ngIf="passwordModel.invalid && passwordModel.touched" style="color: red; font-size: 14px;">
             Password is required.
         </div>
         
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+          </div>
+      
+
         <button type="submit">Login</button>
     </form>
     <div class="signup-link">

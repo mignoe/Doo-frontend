@@ -82,6 +82,21 @@
   .go-btn:hover {
     background-color: #0056b3;
   }
+
+  .sign-out-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sign-out-btn:hover {
+    background-color: #990000;
+  }
   
   .no-projects-text {
     text-align: center;

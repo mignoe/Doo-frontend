@@ -1,6 +1,7 @@
 <div class="projects-container">
   <div class="header">
     <h2>Your Projects</h2>
+    <button class="sign-out-btn" (click)="signOut()">Sign out</button>
     <button class="create-btn" (click)="createProject()">+ New Project</button>
   </div>
 
@@ -9,7 +10,7 @@
       <li *ngFor="let project of projects" class="project-item">
         <div class="project-info">
           <h3>{{ project.name }}</h3>
-          <p>Project ID: {{ project.id }}</p>
+          <p>Project users: {{ getProjectUserNames(project) }}</p>
         </div>
         <button class="go-btn" (click)="goToProject(project.id)">Go to Project</button>
       </li>

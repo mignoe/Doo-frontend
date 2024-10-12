@@ -15,6 +15,25 @@
         required
         placeholder="Enter the project name"
       />
+      <label for="ProjectUsers">Project Users:</label>
+      <input
+        type="text"
+        id="ProjectUsers"
+        class="form-input"
+        [(ngModel)]="projectUsers"
+        name="ProjectUsers"
+        placeholder="Enter the project normal users, separated by commas"
+      />
+      <label for="ProjectName">Project Admins:</label>
+      <p>Admins are users that can do special operations on the project, such as addind more users and admins, and creating sessions</p>
+      <input
+        type="text"
+        id="ProjectAdmins"
+        class="form-input"
+        [(ngModel)]="projectAdmins"
+        name="ProjectAdmins"
+        placeholder="Enter the project admins, separated by commas"
+      />
     </div>
 
 

@@ -20,9 +20,9 @@ cd Doo
 
 npm install
 
-## Execute the back-end
+## Execute o back-end
 
-execute the following commands:
+Execute os seguintes comandos:
 
 npm run build
 
@@ -48,7 +48,9 @@ npm install -g @angular/cli
 npm install
 
 
-## Execução
+## Execução do front end
+
+Para funcionar corretamente, por favor execute o back end como especificado anteriormente
 
 Para iniciar o projeto, execute:
 
